@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+
+    <changeSet id="20210326113000-1" author="jhipster">
+        <sql dbms="mysql">
+            INSERT INTO bo_data
+            (id, data_key, data_value, created_by, created_date, last_modified_by, last_modified_date)
+            VALUES(1, 'IOS_VERSION', '{"force_upgrade":true,"version":"1.0.2","url":"https://apps.apple.com/us/app/konekto-connecting-business/id1498802843"}', 'admin@xyz.com', '2021-03-12 09:11:27.0', 'admin@xyz.com', '2021-03-12 09:11:27.0');
+            INSERT INTO bo_data
+            (id, data_key, data_value, created_by, created_date, last_modified_by, last_modified_date)
+            VALUES(2, 'ANDROID_VERSION', '{"force_upgrade":true,"version":"1.0.1","url":"https://play.google.com/store/apps/details?id=com.tokoin.tokobook"}', 'admin@xyz.com', '2021-03-12 09:12:17.0', 'admin@xyz.com', '2021-03-12 10:04:04.0');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

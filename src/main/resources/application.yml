@@ -1,0 +1,51 @@
+server:
+  port: ${PORT:8099}
+  servlet:
+    context-path: /backoffice
+
+spring:
+  application:
+    name: backoffice-service
+  liquibase:
+    change-log: classpath:/liquibase/master.xml
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/backofficedb?useUnicode=yes&characterEncoding=UTF-8}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:root}
+    hikari:
+      connectionTimeout: 30000
+      idleTimeout: 600000
+      maxLifetime: 1800000
+      maximumPoolSize: 3
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: false
+  rabbitmq:
+    host: ${RABBIT_HOST:localhost}
+    port: 5672
+    username: ${RABBIT_USERNAME:konekto}
+    password: ${RABBIT_PASSWORD:Admin123}
+
+pos:
+  baseUrl: ${POS_URL:https://devapps.tokoin.io}
+  commonBuildNumber: ${POS_BUILD:2}
+  uri:
+    getBusinessType: /business_type/list
+    getSubBusinessType: /sub_business_type/list
+
+backoffice:
+  security:
+    authentication:
+      base64-secret: NTVhZmNmZThhZDI0NTAxN2ExZmI5YjA1ZGViYTU1OTk2NjY0YmU1YTFlYzU3YzQxMDcyMjkyZDgxMjBlMmExMDI3OTNlZGFjMTM1YTkxMDJmZTcwZTdiN2I3YWYzMjQzMjI4Mzk1YmUzNzNmNTQ5MjM5NzQ3NWU5YzA5ZDNjNWM=
+      token-validity-in-seconds: 86400
+      token-validity-in-seconds-for-remember-me: 2592000
+  rabbitmq:
+    exchange: ${RABBIT_EXCHANGE:pos}
+    businessQueue: ${RABBIT_QUEUE_BUSINESS:user}
+    businessRoutingKey: ${RABBIT_ROUTINGKEY_BUSINESS:data.partial.updated}
+
+logging:
+  level:
+    io.tokoin.konekto: DEBUG
+  file:
+    path: ${LOGPATH:/tmp/logs}

@@ -1,0 +1,2 @@
+id;name;password_hash;email;image_url;activated;created_by;last_modified_by
+1;admin;$2a$10$gSAhZrxMllrbgj/kkK9UceBPpChGWJA7SYIb1Mqo.n5aNLq1/oRrC;admin@xyz.com;;true;system;system
